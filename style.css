@@ -1,0 +1,27 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+html,body{
+    height: 100%;
+    background: linear-gradient(90deg, #29323C 0%, #485563 100%);
+}
+body{
+	display: flex;
+	flex-direction: column;
+}
+.col{
+    width: 50%;
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+.container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100vh;
+}
+.col{
+    height: 100%;
+}
