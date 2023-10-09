@@ -43,7 +43,9 @@
      
 // }
 
-class Grass extends BaseClass{
+let BaseClass = require("./BaseClass.js")
+
+module.exports = class Grass extends BaseClass{
     mul() {
         this.multiply++;
         var newCell = random(this.chooseCell(0));

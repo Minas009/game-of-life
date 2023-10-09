@@ -104,7 +104,9 @@
 //     }
 // }
 
-class Predator extends BaseClass{
+let BaseClass = require("./BaseClass.js")
+
+module.exports = class Predator extends BaseClass{
     constructor(x, y, index){
         super(x, y, index)
         this.energy = 8

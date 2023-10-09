@@ -1,4 +1,4 @@
-class BaseClass {
+module.exports = class BaseClass {
   constructor(x, y, index){
       this.x = x;
       this.y = y;

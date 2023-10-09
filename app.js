@@ -1,3 +1,9 @@
+let Grass = require("./grass.js")
+let GrassEater = require("./grassEater.js")
+let Lightning = require("./lightning.js")
+let Person = require("./person.js")
+let Predator = require("./predator.js")
+
 var sides = 20;
 var matrix 
 function fillCharecter(charecter, count, side) {
@@ -83,7 +89,7 @@ function showLightning(){
     }
 }
     
-     setInterval(showLightning, 10000)
+    //  setInterval(showLightning, 10000)
 }
 
 function draw() {

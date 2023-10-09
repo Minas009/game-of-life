@@ -98,7 +98,9 @@
 //     }
 // }
 
-class GrassEater extends BaseClass{
+let BaseClass = require("./BaseClass.js")
+
+module.exports = class GrassEater extends BaseClass{
     constructor(x, y, index){
         super(x, y, index)
         this.energy = 8

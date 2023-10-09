@@ -44,8 +44,9 @@
 
 // }
 
+let BaseClass = require("./BaseClass.js")
 
-class Lightning extends BaseClass {
+module.exports = class Lightning extends BaseClass {
   strike() {
     for (let i in this.directions) {
       var x = this.directions[i][0];

@@ -118,7 +118,9 @@
 
 // }
 
-class Person extends BaseClass{
+let BaseClass = require("./BaseClass.js")
+
+module.exports = class Person extends BaseClass{
     constructor(x, y, index){
         super(x, y, index)
         this.energy = 8
