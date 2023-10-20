@@ -43,7 +43,6 @@
 //   }
 
 // }
-
 let BaseClass = require("./BaseClass.js")
 
 module.exports = class Lightning extends BaseClass {

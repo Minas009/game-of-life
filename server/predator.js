@@ -103,7 +103,8 @@
 //         }
 //     }
 // }
-
+let GrassEater = require("./grassEater.js")
+let random = require("./random");
 let BaseClass = require("./BaseClass.js")
 
 module.exports = class Predator extends BaseClass{

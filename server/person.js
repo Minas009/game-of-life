@@ -117,7 +117,10 @@
 
 
 // }
-
+let Predator = require("./predator.js")
+let GrassEater = require("./grassEater.js")
+let Grass = require("./grass.js")
+let random = require("./random");
 let BaseClass = require("./BaseClass.js")
 
 module.exports = class Person extends BaseClass{

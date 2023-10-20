@@ -96,8 +96,8 @@
 //             this.move()
 //         }
 //     }
-// }
-
+// }3
+let random = require("./random");
 let BaseClass = require("./BaseClass.js")
 
 module.exports = class GrassEater extends BaseClass{

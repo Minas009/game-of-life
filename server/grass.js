@@ -42,7 +42,7 @@
     
      
 // }
-
+let random = require("./random");
 let BaseClass = require("./BaseClass.js")
 
 module.exports = class Grass extends BaseClass{
