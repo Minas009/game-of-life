@@ -1,3 +1,6 @@
+//DOM
+let grassStatics = document.querySelector('#grass')
+
 var socket = io()
 
 function setup() {
@@ -7,11 +10,16 @@ function setup() {
 }
 
 socket.on('myMatrix', MyDraw)
+socket.on("statics", Stats)
 
+function Stats(stats){
+    grassStatics.innerHTML =  JSON.parse(stats).grass
+    // console.log(stats["grass"]);   
+}
 function handleMatrix(info){
    // console.log(info);
 }
-let size = 400
+let a = 400
 function MyDraw(matrix) {
 
     for (let y = 0; y < matrix.length; y++) {
@@ -35,12 +43,12 @@ function MyDraw(matrix) {
             else if (matrix[y][x] == 5) {
                 fill("#ffffff")
             }
-            rect(x * size/matrix.length, y * size/matrix.length, size/matrix.length, size/matrix.length);
+            rect(x * a/matrix.length, y * a/matrix.length, a/matrix.length, a/matrix.length);
 
 
             // fill("blue")
             // text(x + ";" + y, x * side + side / 2, y * side + side / 2)
-
+            
         }
     }
 }

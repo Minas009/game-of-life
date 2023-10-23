@@ -1,4 +1,5 @@
 //modules
+var fs = require('fs');
 var express = require("express");
 var app = express();
 let random = require("./random");
@@ -6,8 +7,6 @@ var server = require('http').createServer(app); // add
 var io = require('socket.io')(server); // add
 
 app.use(express.static("../client"));
-
-
 
 app.get("/", function (req, res) {
     res.redirect("index.html");
@@ -23,6 +22,20 @@ let GrassEater = require("./grassEater.js")
 let Lightning = require("./lightning.js")
 let Person = require("./person.js")
 let Predator = require("./predator.js")
+
+grassArr = []
+grassEaterArr = []
+standartPredatorsArr = []
+predatorArr = []
+personArr = []
+lightningArr = []
+//fs
+
+
+
+
+
+//matrix
 
 var sides = 20;
 
@@ -57,12 +70,7 @@ function fillCharecter(charecter, count, sides) {
 
 
 
-grassArr = []
-grassEaterArr = []
-standartPredatorsArr = []
-predatorArr = []
-personArr = []
-lightningArr = []
+
 
 function createObj() {
     for (let y = 0; y < matrix.length; y++) {
@@ -102,6 +110,18 @@ function start() {
     createPerson()
     refreshGame()
     io.sockets.emit("myMatrix", matrix)
+
+    let statics ={
+        "grass" : grassArr.length,
+        "grassEater": grassEaterArr.length,
+        "predator": predatorArr.length,
+        "person": personArr.length,
+    }
+
+    json = JSON.stringify(statics);
+
+    fs.writeFileSync("statics.json", json);
+    io.sockets.emit("statics", json)
 }
 
 setInterval(() => {
@@ -121,8 +141,10 @@ function showLightning() {
     if (lightningArr.length >= 2) {
         let x1 = lightningArr[0].x
         let y1 = lightningArr[0].y
+        console.log(x1, y1);
         matrix[y1][x1] = 0
-        console.log(lightningArr[0]);
+        
+        //console.log(lightningArr[0]);
         
         
         lightningArr.splice(0, 1)
@@ -181,3 +203,5 @@ io.on('connection', function (socket) {
 setInterval(() => {
     start()
 }, 1000);
+
+// setInterva

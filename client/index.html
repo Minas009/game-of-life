@@ -10,18 +10,24 @@
 <body>
         <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.js"></script>
-   <script src="client.js"></script>
     <div class="container">
         <div id="column" class="col"></div>
-    <div class="col">
-        <ul>
-            <li>Grass կերպարը ներկված է կանաչ գույնով կատարոմ է խոտի գործառույթ:
-                Հիմնականում կեր է մնացած կերպարների համար: Կարողանում է շատանալ:</li>
-                <li>GrassEater կերպարը ներկված է դեղին գույնով: Ուտում է խոտ: Շատանում է երբ ծատ է ուտում: Սովից կարող է մահանալ:</li>
-                <li>Grass կերպարը ներկված է կարմիր գույնով</li>
-        </ul>
-    </div>
-    </div>
+        <div class="col">
+            <div class="ul">
+                <ul>
+                    <li>Grass կերպարը ներկված է կանաչ գույնով կատարոմ է խոտի գործառույթ:
+                        Հիմնականում կեր է մնացած կերպարների համար: Կարողանում է շատանալ:</li>
+                        <li>GrassEater կերպարը ներկված է դեղին գույնով: Ուտում է խոտ: Շատանում է երբ ծատ է ուտում: Սովից կարող է մահանալ:</li>
+                        <li>Grass կերպարը ներկված է կարմիր գույնով</li>
+                    </ul>
+                </div>
+                <div class="stats">
+                    <p id="grass"></p>
+                    <p id="grassEater"></p>
+                </div>
+            </div>
+        </div>
+        <script src="client.js"></script>
     
 </body>
 </html> 
