@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style.css">
-    <title>Progrmming 2</title>
+    <title>Progrmming 3</title>
 </head>
 <body>
         <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
@@ -13,17 +13,29 @@
     <div class="container">
         <div id="column" class="col"></div>
         <div class="col">
-            <div class="ul">
-                <ul>
-                    <li>Grass կերպարը ներկված է կանաչ գույնով կատարոմ է խոտի գործառույթ:
-                        Հիմնականում կեր է մնացած կերպարների համար: Կարողանում է շատանալ:</li>
-                        <li>GrassEater կերպարը ներկված է դեղին գույնով: Ուտում է խոտ: Շատանում է երբ ծատ է ուտում: Սովից կարող է մահանալ:</li>
-                        <li>Grass կերպարը ներկված է կարմիր գույնով</li>
-                    </ul>
-                </div>
-                <div class="stats">
-                    <p id="grass"></p>
-                    <p id="grassEater"></p>
+            <div class="stats">
+                <table>
+                    <tr>
+                        <th>կերպար</th>
+                        <th>հատկանիշներ</th>
+                        <th>քանակ</th>
+                      </tr>
+                      <tr>
+                        <td>խոտ(Grass)</td>
+                        <td>Grass կերպարը ներկված է կանաչ գույնով կատարոմ է խոտի գործառույթ:
+                            Հիմնականում կեր է մնացած կերպարների համար: Կարողանում է շատանալ:</td>
+                        <td><p id="grass"></p></td>
+                      </tr>
+                      <tr>
+                        <td>Խոտակեր(GrassEater)</td>
+                        <td>GrassEater կերպարը ներկված է դեղին գույնով: Ուտում է խոտ: 
+                            Շատանում է երբ ծատ է ուտում: Սովից կարող է մահանալ:</td>
+                        <td><p id="grassEater"></p></td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                      </tr>
+                    </table>
                 </div>
             </div>
         </div>

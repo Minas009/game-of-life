@@ -141,7 +141,7 @@ function showLightning() {
     if (lightningArr.length >= 2) {
         let x1 = lightningArr[0].x
         let y1 = lightningArr[0].y
-        console.log(x1, y1);
+        //console.log(x1, y1);
         matrix[y1][x1] = 0
         
         //console.log(lightningArr[0]);
@@ -179,29 +179,14 @@ function refreshGame() {
     }
 }
 
-
 matrix = matrixGenerator(sides)
-
 
 createObj()
 
-
-
 io.on('connection', function (socket) {
-
     socket.emit("myMatrix", matrix);
-    // socket.on("send message", function (data) {
-
-    // messages.push(data);
-
-    // io.sockets.emit("display message", data);
-
-    // });
-
 });
 
 setInterval(() => {
     start()
 }, 1000);
-
-// setInterva
