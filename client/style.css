@@ -5,7 +5,7 @@
 }
 html,body{
     height: 100%;
-    background: linear-gradient(90deg, #29323C 0%, #485563 100%);
+    /* background: linear-gradient(90deg, #29323C 0%, #485563 100%); */
 }
 body{
 	display: flex;
@@ -24,4 +24,19 @@ body{
 }
 .col{
     height: 100%;
+}
+.grass{
+    background-color: green;
+}
+.grassEater{
+    background-color: #ffff00;
+}
+.predator{
+    background-color: #ff0000;
+}
+.person{
+    background-color: #ffb400;
+}
+.lightning{
+    background-color: #ffffff;
 }

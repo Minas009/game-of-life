@@ -29,12 +29,6 @@ standartPredatorsArr = []
 predatorArr = []
 personArr = []
 lightningArr = []
-//fs
-
-
-
-
-
 //matrix
 
 var sides = 20;
@@ -108,7 +102,7 @@ function start() {
         personArr[i].eat()
     }
     createPerson()
-    refreshGame()
+    //refreshGame()
     io.sockets.emit("myMatrix", matrix)
 
     let statics ={
@@ -133,7 +127,7 @@ function showLightning() {
     let y = Math.floor(random(sides))
     if (matrix[y][x] == 0) {
         matrix[y][x] = 5
-        let lightning = new Lightning(3, 1, 5)
+        let lightning = new Lightning(x, y, 5)
         lightning.strike()
         lightningArr.push(lightning)
 
@@ -141,12 +135,7 @@ function showLightning() {
     if (lightningArr.length >= 2) {
         let x1 = lightningArr[0].x
         let y1 = lightningArr[0].y
-        //console.log(x1, y1);
-        matrix[y1][x1] = 0
-        
-        //console.log(lightningArr[0]);
-        
-        
+        matrix[y1][x1] = 0        
         lightningArr.splice(0, 1)
     }
 }
@@ -161,22 +150,10 @@ function createPerson() {
     }
 
 }
-function refreshGame() {
-    if (grassEaterArr.length < 2 && predatorArr.length < 2) {
-        let x1 = Math.floor(random(0, sides))
-        let y1 = Math.floor(random(0, sides))
-        let x2 = Math.floor(random(0, sides))
-        let y2 = Math.floor(random(0, sides))
+sockets.emit("refreshGame", refreshGame())
 
-        if (x1 != x2 && y1 != y2) {
-            let grassEater = new GrassEater(x1, y1, 2);
-            grassEaterArr.push(grassEater);
-            matrix[y1][x1] = 2;
-            let predator = new Predator(x2, y2, 3);
-            predatorArr.push(predator);
-            matrix[y2][x2] = 3;
-        }
-    }
+function refreshGame() {
+    matrix = matrixGenerator(sides)
 }
 
 matrix = matrixGenerator(sides)

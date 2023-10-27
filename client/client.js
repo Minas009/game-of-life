@@ -1,24 +1,35 @@
 //DOM
 let grassStatics = document.querySelector('#grass')
+let grassEaterStatics = document.querySelector('#grassEater')
+let predatorStatics = document.querySelector('#predator')
+let personStatics = document.querySelector('#person')
+let lightningStatics = document.querySelector('#lightning')
 //modules
 var socket = io()
-
+//from server
 socket.on('myMatrix', MyDraw)
 socket.on("statics", Stats)
+socket.on("refreshgame", RefreshGame)
 //p5
 function setup() {
     let canvas = createCanvas(400, 400);
     canvas.parent("column")
     background('#acacac');
 }
+function RefreshGame(){
+    return refreshGame()
+}
+
 
 function Stats(stats) {
     grassStatics.innerHTML = JSON.parse(stats).grass
+    grassEaterStatics.innerHTML = JSON.parse(stats).grassEater
+    predatorStatics.innerHTML = JSON.parse(stats).predator
+    personStatics.innerHTML = JSON.parse(stats).person
+    lightningStatics.innerHTML = JSON.parse(stats).lightning
     // console.log(stats["grass"]);   
 }
-function handleMatrix(info) {
-    // console.log(info);
-}
+
 let a = 400
 function MyDraw(matrix) {
 
