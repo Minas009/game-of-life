@@ -40,3 +40,19 @@ body{
 .lightning{
     background-color: #ffffff;
 }
+#restartGame {
+    background-color: #4CAF50; /* Green background color */
+    border: none; /* No border */
+    color: white; /* White text color */
+    padding: 10px 20px; /* Padding inside the button */
+    text-align: center; /* Center the text horizontally */
+    text-decoration: none; /* Remove underline from the text */
+    display: inline-block; /* Display the button as an inline element */
+    font-size: 16px; /* Font size */
+    margin: 10px; /* Margin around the button */
+    cursor: pointer; /* Show a hand cursor on hover */
+    border-radius: 5px; /* Optional: Add rounded corners to the button */
+}
+#restartGame:hover {
+    background-color: #45a049; /* Darker green color on hover */
+}

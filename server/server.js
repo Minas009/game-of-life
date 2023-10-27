@@ -17,6 +17,10 @@ server.listen(3000, function () { // add
 });
 
 //matrix
+weather = "winter";
+
+
+
 let Grass = require("./grass.js")
 let GrassEater = require("./grassEater.js")
 let Lightning = require("./lightning.js")
@@ -51,6 +55,7 @@ function matrixGenerator(sides) {
     fillCharecter(1, 80, sides)
     fillCharecter(2, 10, sides)
     fillCharecter(3, 10, sides)
+    fillCharecter(4, 5, sides)
     return arr
 }
 
@@ -108,14 +113,16 @@ function start() {
     let statics ={
         "grass" : grassArr.length,
         "grassEater": grassEaterArr.length,
-        "predator": predatorArr.length,
+        "predator": standartPredatorsArr.length,
         "person": personArr.length,
+        "lightning": lightningArr.length
     }
 
     json = JSON.stringify(statics);
 
     fs.writeFileSync("statics.json", json);
     io.sockets.emit("statics", json)
+    io.sockets.emit("Weather", weather);
 }
 
 setInterval(() => {
@@ -150,7 +157,7 @@ function createPerson() {
     }
 
 }
-sockets.emit("refreshGame", refreshGame())
+io.sockets.emit("refreshGame", refreshGame())
 
 function refreshGame() {
     matrix = matrixGenerator(sides)
