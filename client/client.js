@@ -5,6 +5,8 @@ let predatorStatics = document.querySelector('#predator')
 let personStatics = document.querySelector('#person')
 let lightningStatics = document.querySelector('#lightning')
 let restartGame = document.querySelector('#restartGame')
+let lightning = document.querySelector('#lightningStrike')
+let weatherText = document.querySelector('#Weather')
 //console.log(grassStatics);
 
 //modules
@@ -13,8 +15,14 @@ var socket = io()
 
 socket.on('myMatrix', MyDraw)
 socket.on("statics", Stats)
-socket.on("Weather", Weather);
+socket.on("weather", Weather);
 socket.on("eventIsDone", EventFalse)
+socket.on("Striked", Striked)
+
+function Striked(striked){
+    strike = striked
+}
+
 //p5
 function setup() {
     let canvas = createCanvas(400, 400);
@@ -22,14 +30,23 @@ function setup() {
     background('#acacac');
 }
 
-var weather
+var weather  = "spring"
 function Weather(w){
     weather = w;
+    weatherText.innerHTML = weather
 }
+
 //console.log(weather);
 
+lightning.addEventListener("click", lightningStrike);
 
 
+function lightningStrike(){
+    strike = true
+    socket.emit("Strike", strike)
+    console.log(strike);
+    
+}
 function Stats(stats) {
     grassStatics.innerHTML = JSON.parse(stats).grass
     grassEaterStatics.innerHTML = JSON.parse(stats).grassEater
@@ -40,12 +57,10 @@ function Stats(stats) {
 }
 function restart(){
     event = true
-    socket.emit("event", Event)
-    console.log(event);
+    socket.emit("event", event)
 }
 function EventFalse(eventIsDone){
    event = eventIsDone
-   console.log(event);
 }
 
 restartGame.addEventListener("click", restart);
@@ -57,9 +72,9 @@ function MyDraw(matrix) {
             //console.log(weather);
             if (matrix[y][x] == 1) {
                 if (weather == "spring" || weather == "summer"){
-                fill("#ffffff");
+                fill("#00ff00");
                 }else if( weather == "fall"){
-                    fill("#ffffff")
+                    fill("#FF8B00")
                 }else if(weather == "winter"){
                     fill("#ffffff")
                 }

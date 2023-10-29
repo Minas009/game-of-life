@@ -40,7 +40,7 @@ body{
 .lightning{
     background-color: #6CF6FF;
 }
-#restartGame {
+button {
     background-color: #4CAF50;
     border: none;
     color: white;
@@ -53,7 +53,7 @@ body{
     cursor: pointer;
     border-radius: 5px;
 }
-#restartGame:hover {
+button:hover {
     background-color: #45a049;  
 }
 .color{
@@ -61,4 +61,7 @@ body{
     height: 10px;
     width: 10px;
     border: 1px solid #000; 
+}
+h1{
+    display: inline-block;
 }

@@ -27,29 +27,21 @@ setInterval(() => {
     }
     io.sockets.emit("weather", weather)
     if (weather == "winter") {
+      
         startTime = 2000
     } else if (weather == "summer") {
         startTime = 500
     } else if (weather = "fall" || weather == "spring") {
         startTime = 1000
     }
+
+    clearInterval(id)
+    id = setInterval(start, startTime)
 }, 5000);
 
 //matrix charectors
 
-io.sockets.on("event", Event)
 
-function Event(event) {
-    console.log(event);
-    
-    if (event == true) {
-        refreshGame()
-        event = false
-        console.log(event);
-        
-        io.sockets.emit("eventIsDone", event)
-    }
-}
 
 let Grass = require("./grass.js")
 let GrassEater = require("./grassEater.js")
@@ -89,17 +81,7 @@ function matrixGenerator(sides) {
     return arr
 }
 
-function fillCharecter(charecter, count, sides) {
-    for (let i = 0; i < count; i++) {
-        let x = Math.floor(Math.random() * sides)
-        let y = Math.floor(Math.random() * sides)
-        arr[y][x] = charecter
-    }
-}
-
-
-
-
+matrix = matrixGenerator(sides)
 
 function createObj() {
     for (let y = 0; y < matrix.length; y++) {
@@ -139,8 +121,9 @@ function start() {
     createPerson()
     //refreshGame()
     io.sockets.emit("myMatrix", matrix)
-
+    
     let statics = {
+        
         "grass": grassArr.length,
         "grassEater": grassEaterArr.length,
         "predator": standartPredatorsArr.length,
@@ -154,10 +137,6 @@ function start() {
     io.sockets.emit("statics", json)
     //io.sockets.emit("Weather", weather);
 }
-
-setInterval(() => {
-    showLightning()
-}, startTime * 3);
 
 function showLightning() {
     let x = Math.floor(random(sides))
@@ -187,20 +166,47 @@ function createPerson() {
     }
 
 }
-io.sockets.emit("refreshGame", refreshGame())
 
-function refreshGame() {
-    matrix = matrixGenerator(sides)
+function Event(event) {  
+    if (event == true) {
+        refreshGame()
+        event = false
+        io.sockets.emit("eventIsDone", event)
+    }
+}
+io.sockets.emit("refreshGame", refreshGame)
+
+function Strike(strike){
+    console.log("suhurh8e");
+    
+    if (strike = true){
+        showLightning()
+        strike = false
+        io.sockets.emit("Striked", Strike)
+    }
 }
 
-refreshGame()
+function refreshGame() {
+    grassArr = []
+    grassEaterArr = []
+    standartPredatorsArr = []
+    personArr = []
+    lightningArr = []
+    for(let y in matrix){
+        for(let x in matrix[0]){
+            matrix[y][x] = 0
+        }
+    }
+    matrix = matrixGenerator(sides)
+}
 
 createObj()
 
 io.on('connection', function (socket) {
     socket.emit("myMatrix", matrix);
+    socket.on("event", Event)
+    socket.on("Strike", Strike)
 });
-
-setInterval(() => {
+ id= setInterval(() => {
     start()
 }, startTime);
