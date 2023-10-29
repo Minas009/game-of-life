@@ -13,23 +13,20 @@ var socket = io()
 
 socket.on('myMatrix', MyDraw)
 socket.on("statics", Stats)
-socket.on("refreshgame", RefreshGame)
 socket.on("Weather", Weather);
+socket.on("eventIsDone", EventFalse)
 //p5
 function setup() {
     let canvas = createCanvas(400, 400);
     canvas.parent("column")
     background('#acacac');
 }
-function specialEvent() {}
-function RefreshGame(refreshGame){
-    specialEvent() = refreshGame()
-}
+
 var weather
 function Weather(w){
     weather = w;
 }
-console.log(weather);
+//console.log(weather);
 
 
 
@@ -43,9 +40,13 @@ function Stats(stats) {
 }
 function restart(){
     event = true
-    return event
+    socket.emit("event", Event)
+    console.log(event);
 }
-//io.sockets.emit("event", Event)
+function EventFalse(eventIsDone){
+   event = eventIsDone
+   console.log(event);
+}
 
 restartGame.addEventListener("click", restart);
 let a = 400
@@ -53,8 +54,7 @@ function MyDraw(matrix) {
 
     for (let y = 0; y < matrix.length; y++) {
         for (let x = 0; x < matrix[y].length; x++) {
-            console.log(weather);
-            
+            //console.log(weather);
             if (matrix[y][x] == 1) {
                 if (weather == "spring" || weather == "summer"){
                 fill("#ffffff");

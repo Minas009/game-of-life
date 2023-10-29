@@ -38,24 +38,27 @@ body{
     background-color: #ffb400;
 }
 .lightning{
-    background-color: #ffffff;
+    background-color: #6CF6FF;
 }
 #restartGame {
-    background-color: #4CAF50; /* Green background color */
-    border: none; /* No border */
-    color: white; /* White text color */
-    padding: 10px 20px; /* Padding inside the button */
-    text-align: center; /* Center the text horizontally */
-    text-decoration: none; /* Remove underline from the text */
-    display: inline-block; /* Display the button as an inline element */
-    font-size: 16px; /* Font size */
-    margin: 10px; /* Margin around the button */
-    cursor: pointer; /* Show a hand cursor on hover */
-    border-radius: 5px; /* Optional: Add rounded corners to the button */
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px; 
+    cursor: pointer;
+    border-radius: 5px;
 }
 #restartGame:hover {
-    background-color: #45a049; /* Darker green color on hover */
+    background-color: #45a049;  
 }
 .color{
-    display: flex;
+    display: inline-block;
+    height: 10px;
+    width: 10px;
+    border: 1px solid #000; 
 }

@@ -37,6 +37,20 @@ setInterval(() => {
 
 //matrix charectors
 
+io.sockets.on("event", Event)
+
+function Event(event) {
+    console.log(event);
+    
+    if (event == true) {
+        refreshGame()
+        event = false
+        console.log(event);
+        
+        io.sockets.emit("eventIsDone", event)
+    }
+}
+
 let Grass = require("./grass.js")
 let GrassEater = require("./grassEater.js")
 let Lightning = require("./lightning.js")
