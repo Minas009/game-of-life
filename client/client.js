@@ -5,12 +5,15 @@ let predatorStatics = document.querySelector('#predator')
 let personStatics = document.querySelector('#person')
 let lightningStatics = document.querySelector('#lightning')
 let restartGame = document.querySelector('#restartGame')
+//console.log(grassStatics);
+
 //modules
 var socket = io()
 //from server
+
 socket.on('myMatrix', MyDraw)
 socket.on("statics", Stats)
-//socket.on("refreshgame", RefreshGame)
+socket.on("refreshgame", RefreshGame)
 socket.on("Weather", Weather);
 //p5
 function setup() {
@@ -18,16 +21,15 @@ function setup() {
     canvas.parent("column")
     background('#acacac');
 }
-// function RefreshGame(refreshGame){
-//     return refreshGame()
-// }
+function specialEvent() {}
+function RefreshGame(refreshGame){
+    specialEvent() = refreshGame()
+}
 var weather
 function Weather(w){
-    weather= w
-  console.log(weather)
-    // return weather
+    weather = w;
 }
-// console.log(Weather());
+console.log(weather);
 
 
 
@@ -43,18 +45,22 @@ function restart(){
     event = true
     return event
 }
+//io.sockets.emit("event", Event)
+
 restartGame.addEventListener("click", restart);
 let a = 400
 function MyDraw(matrix) {
 
     for (let y = 0; y < matrix.length; y++) {
         for (let x = 0; x < matrix[y].length; x++) {
+            console.log(weather);
+            
             if (matrix[y][x] == 1) {
-                if (Weather() == "spring" || Weather() == "summer"){
+                if (weather == "spring" || weather == "summer"){
                 fill("#ffffff");
-                }else if(Weather() == "autumn"){
+                }else if( weather == "fall"){
                     fill("#ffffff")
-                }else if(Weather() == "winter"){
+                }else if(weather == "winter"){
                     fill("#ffffff")
                 }
             }else if (matrix[y][x] == 0) {

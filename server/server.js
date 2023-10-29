@@ -15,11 +15,27 @@ app.get("/", function (req, res) {
 server.listen(3000, function () { // add
     console.log("Example is running on port 3000");
 });
-
-//matrix
 weather = "winter";
+weatherArr = ["spring", "summer", "fall", "winter"]
+i = 0
+startTime = 1000
+setInterval(() => {
+    weather = weatherArr[i]
+    i++
+    if (i > weatherArr.length - 1) {
+        i = 0
+    }
+    io.sockets.emit("weather", weather)
+    if (weather == "winter") {
+        startTime = 2000
+    } else if (weather == "summer") {
+        startTime = 500
+    } else if (weather = "fall" || weather == "spring") {
+        startTime = 1000
+    }
+}, 5000);
 
-
+//matrix charectors
 
 let Grass = require("./grass.js")
 let GrassEater = require("./grassEater.js")
@@ -110,8 +126,8 @@ function start() {
     //refreshGame()
     io.sockets.emit("myMatrix", matrix)
 
-    let statics ={
-        "grass" : grassArr.length,
+    let statics = {
+        "grass": grassArr.length,
         "grassEater": grassEaterArr.length,
         "predator": standartPredatorsArr.length,
         "person": personArr.length,
@@ -122,12 +138,12 @@ function start() {
 
     fs.writeFileSync("statics.json", json);
     io.sockets.emit("statics", json)
-    io.sockets.emit("Weather", weather);
+    //io.sockets.emit("Weather", weather);
 }
 
 setInterval(() => {
     showLightning()
-}, 3000);
+}, startTime * 3);
 
 function showLightning() {
     let x = Math.floor(random(sides))
@@ -142,7 +158,7 @@ function showLightning() {
     if (lightningArr.length >= 2) {
         let x1 = lightningArr[0].x
         let y1 = lightningArr[0].y
-        matrix[y1][x1] = 0        
+        matrix[y1][x1] = 0
         lightningArr.splice(0, 1)
     }
 }
@@ -163,7 +179,7 @@ function refreshGame() {
     matrix = matrixGenerator(sides)
 }
 
-matrix = matrixGenerator(sides)
+refreshGame()
 
 createObj()
 
@@ -173,4 +189,4 @@ io.on('connection', function (socket) {
 
 setInterval(() => {
     start()
-}, 1000);
+}, startTime);
